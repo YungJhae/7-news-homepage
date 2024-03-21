@@ -1,0 +1,386 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Inter" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | News homepage</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        background: hsl(36, 100%, 99%);
+        font-family: "Epilogue", sans-serif;
+        font-size: 1rem;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 3rem 2rem;
+        overflow: hidden;
+      }
+
+      .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+      }
+
+      .list {
+        display: flex;
+      }
+
+      .list .list-items {
+        padding: 0.5rem 1rem;
+        margin: 0 1.5rem;
+        font-size: 1.2rem;
+      }
+
+      .list .list-items:last-child {
+        margin-right: 0;
+        padding-right: 0;
+      }
+
+      .list .list-items:hover {
+        color: hsl(5, 85%, 63%);
+      }
+
+      .menu-button {
+        display: none;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 2rem 0;
+        grid-gap: 2rem;
+      }
+
+      .one .item:first-child {
+        grid-column: 1 / span 2;
+      }
+
+      .one .item:first-child > img {
+        width: 100%;
+      }
+
+      .one .item:last-child {
+        grid-row: 1 / span 3;
+        grid-column: 3 / span 2;
+        background: hsl(240, 100%, 5%);
+        color: hsl(36, 100%, 99%);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .one .item:last-child > h2 {
+        color: hsl(35, 77%, 62%);
+        font-size: 3rem;
+        font-weight: 700;
+        margin-top: 2.3rem;
+      }
+
+      .one .item:last-child h3 {
+        font-size: 1.5rem;
+        margin: 2rem 0 1.3rem 0;
+      }
+
+      .one .item:last-child h3:hover {
+        color: hsl(35, 77%, 62%);
+        cursor: pointer;
+      }
+
+      .one .item:last-child p {
+        color: hsl(233, 8%, 79%);
+        font-size: 15px;
+        padding-bottom: 2rem;
+        border-bottom: hsl(233, 8%, 79%) solid 1px;
+        margin-bottom: 1rem;
+      }
+
+      .one .item:last-child div:last-child p {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .one .item:nth-child(2) h1 {
+        font-size: 4.7rem;
+        font-weight: 800;
+      }
+
+      .one .item:nth-child(3) {
+        font-size: 15px;
+        line-height: 1.7rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: hsl(233, 8%, 79%);
+      }
+
+      .one .item:nth-child(3) .btn {
+        align-self: baseline;
+        padding: 1rem 2rem;
+        letter-spacing: 0.5rem;
+        font-weight: 700;
+        color: white;
+        background: hsl(5, 85%, 63%);
+      }
+
+      .one .item:nth-child(3) .btn:hover {
+        background: hsl(240, 100%, 5%);
+      }
+
+      .two .item2 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1.5rem;
+      }
+
+      .two .item2 .item2-img img {
+        width: 100%;
+      }
+
+      .two .item2 .item2-words {
+        grid-column: 2 / span 3;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        color: hsl(233, 8%, 79%);
+      }
+
+      .two .item2 .item2-words h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+      }
+
+      .two .item2 .item2-words h3 {
+        font-weight: 700;
+        color: hsl(240, 100%, 5%);
+      }
+
+      .two .item2 .item2-words h3:hover {
+        color: hsl(5, 85%, 63%);
+        cursor: pointer;
+      }
+
+      @media (max-width: 1020px) {
+        .one .item:nth-child(3) h1 {
+          font-size: 4rem;
+          font-weight: 800;
+        }
+
+        .one .item:last-child .btn {
+          margin-top: 8rem;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .two {
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap: 1.5rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .one .item:first-child {
+          grid-column: auto;
+        }
+
+        .one .item:last-child {
+          grid-row: auto;
+          grid-column: auto;
+        }
+
+        .one .item:nth-child(3) .btn {
+          margin-top: 3rem;
+        }
+
+        .one .item:nth-child(2) h1 {
+          font-size: 2.5rem;
+        }
+
+        .list {
+          display: none;
+        }
+
+        .menu-button {
+          display: block;
+        }
+
+        .menu-button button {
+          background: transparent;
+          outline: none;
+          border: none;
+          cursor: pointer;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="main-header">
+        <img src="./assets/images/logo.svg" alt="icon" class="header-icon" />
+
+        <nav class="open">
+          <ul class="list">
+            <li class="list-items"><a href="#">Home</a></li>
+            <li class="list-items"><a href="#">New</a></li>
+            <li class="list-items"><a href="#">Popular</a></li>
+            <li class="list-items"><a href="#">Trending</a></li>
+            <li class="list-items"><a href="#">Categories</a></li>
+          </ul>
+        </nav>
+
+        <div class="menu-button">
+          <button>
+            <img src="./assets/images/icon-menu.svg" alt="menu-open" />
+          </button>
+        </div>
+      </header>
+
+      <section class="grid one">
+        <div class="item">
+          <img src="./assets/images/image-web-3-desktop.jpg" alt="img" />
+        </div>
+        <div class="item">
+          <h1>The Bright Future of Web 3.0?</h1>
+        </div>
+        <div class="item">
+          <p>
+            We dive into the next evolution of the web that claims to put the
+            power of the platforms back into the hands of the people. But is it
+            really fulfilling its promise?
+          </p>
+
+          <a href="#" class="btn">Read More</a>
+        </div>
+
+        <div class="item">
+          <h2>New</h2>
+
+          <div>
+            <h3>New Hydrogen VS Electric Cars</h3>
+            <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+          </div>
+
+          <div>
+            <h3>The Downsides of AI Artistry</h3>
+            <p>
+              What are the possible adverse effects of on-demand AI image
+              generation?
+            </p>
+          </div>
+
+          <div>
+            <h3>Is VC Funding Drying Up?</h3>
+            <p>
+              Private funding by VC firms is down 50% YOY. We take a look at
+              what that means
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid two">
+        <div class="item2">
+          <div class="item2-img">
+            <img src="./assets/images/image-retro-pcs.jpg" alt="Retro" />
+          </div>
+
+          <div class="item2-words">
+            <h2>01</h2>
+            <h3>Reviving Retro PCs</h3>
+            <p>What happens when old PCs are given modern upgrades?</p>
+          </div>
+        </div>
+        <div class="item2">
+          <div class="item2-img">
+            <img src="./assets/images/image-top-laptops.jpg" alt="Laptops" />
+          </div>
+
+          <div class="item2-words">
+            <h2>02</h2>
+            <h3>Top 10 Laptops of 2022</h3>
+            <p>Our best picks for various needs and budgets.</p>
+          </div>
+        </div>
+        <div class="item2">
+          <div class="item2-img">
+            <img src="./assets/images/image-gaming-growth.jpg" alt="Laptops" />
+          </div>
+
+          <div class="item2-words">
+            <h2>03</h2>
+            <h3>The Growth of Gaming</h3>
+            <p>How the pandemic has sparked fresh opportunities.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Home New Popular Trending Categories The Bright Future of Web 3.0? We dive
+    into the next evolution of the web that claims to put the power of the
+    platforms back into the hands of the people. But is it really fulfilling its
+    promise? Read more New Hydrogen VS Electric Cars Will hydrogen-fueled cars
+    ever catch up to EVs? The Downsides of AI Artistry What are the possible
+    adverse effects of on-demand AI image generation? Is VC Funding Drying Up?
+    Private funding by VC firms is down 50% YOY. We take a look at what that
+    means. 01 Reviving Retro PCs What happens when old PCs are given modern
+    upgrades? 02 Top 10 Laptops of 2022 Our best picks for various needs and
+    budgets. 03 The Growth of Gaming How the pandemic has sparked fresh
+    opportunities. -->
+
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+  </body>
+</html>
